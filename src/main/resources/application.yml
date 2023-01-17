@@ -1,13 +1,25 @@
 spring:
   jpa:
-    show_sql: true
-      
+    hibernate:
+      ddl-auto: update # 변경분만 반영 (https://smpark1020.tistory.com/140)
+    properties:
+      hibernate:
+        show_sql: true # sql 생성구문 보기
+        format_sql: true # sql format
+  
   h2:
     console:
       enabled: true
-    path: /h2-console
-    settings:
-      web-allow-others: true
   
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:testdb # h2 콘솔페이지 접속
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+server:
+  servlet:
+    encoding:
+      force: true # mustache 한글깨짐
+
+
